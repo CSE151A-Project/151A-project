@@ -20,7 +20,7 @@ These features have been encoded as binary (0 or 1) to indicate the presence or 
 ## Data Exploration
 During the initial exploration, we analyzed the distributions, scales, and presence of missing data in our dataset. We find that there are great variances in some of the data, so we pick the median number.
 
-Our data might need to be normalized since some feature have a large number, such as number_of_reviews. It is range from 0 - 600. Standardization might be needed as well
+Our data might need to be normalized since some feature have a large number, such as number_of_reviews. It is range from 0 - 600. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. 
 
 
 ## Plots and Visualizations
