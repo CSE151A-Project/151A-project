@@ -32,13 +32,17 @@ In this analysis, we perform several steps to clean and preprocess the Airbnb da
 
 ## Plots and Visualizations
 In this analysis, heatmap, pairplot, and box plots were used to visualize the data. Based on the visualized data, we will need to do data preprocessing on following collomns:
+1. Creating a boxplot for the distribution of bathrooms, bedrooms, and beds to identify outliers.
 
-1. One-Hot Encoding
-   1. We draw box plots for each colomns contains catergory data to illustrate the relationship between the data and Airbnb price. We found that there is certain relations between the catergory data and Airbnb price. Some catergory would be much higher Airbnb price than others. Thus, we will neet to One-Hot Encoding the columns to include them as features in the after machine learning process.
-2. Normalization and Standardization:
-   1. Our data need to be normalized since some feature have a large number, such as number_of_reviews. It is range from 0 - 600. These features are measured on different scales and have different ranges of values, so normalizing them would ensure that each feature contributes approximately proportionately to the final result. 
-   2. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
-   3. For These 9 price and type plot,while log-transformed prices are valuable for analysis and modeling, presenting findings in log scale can be less intuitive for a general audience.Most people are not accustomed to thinking in terms of logarithmic scales in their daily lives.   Therefore, converting the log prices back to actual prices before presenting the results is often necessary. Actual prices give a direct, real-world interpretation of the costs involved.
+2. Plotting histograms for host_response_rate and review_scores_rating to observe their distributions and filling missing values with the median.
+
+3. Generating a histogram for log_price to visualize the price distribution.
+
+4. Computing and visualizing a correlation matrix and heatmap for selected numeric features to understand relationships between variables.
+
+5. Creating a pairplot for the same subset of numeric features to visualize distributions and pairwise relationships.
+
+6. For These 9 price and type plot,while log-transformed prices are valuable for analysis and modeling, presenting findings in log scale can be less intuitive for a general audience.Most people are not accustomed to thinking in terms of logarithmic scales in their daily lives.   Therefore, converting the log prices back to actual prices before presenting the results is often necessary. Actual prices give a direct, real-world interpretation of the costs involved.
  
 ## Data Preprocessing
 To prepare the data for modeling, we performed the following preprocessing steps:
@@ -50,3 +54,5 @@ To prepare the data for modeling, we performed the following preprocessing steps
 3. We might also use Bag of Words (BoW) or Term Frequency-Inverse Document Frequency (TF-IDF) methods to process the 'description' column.
 
 4. Based on the bar chart, it appears that 'host_identity_verified' and 'instant_bookable' may have a minimal impact on pricing. So we might also consider dropping these 2 column.
+
+5. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
