@@ -38,6 +38,7 @@ In this analysis, heatmap, pairplot, and box plots were used to visualize the da
 2. Normalization and Standardization:
    1. Our data need to be normalized since some feature have a large number, such as number_of_reviews. It is range from 0 - 600. These features are measured on different scales and have different ranges of values, so normalizing them would ensure that each feature contributes approximately proportionately to the final result. 
    2. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
+   3. For These 9 price and type plot,while log-transformed prices are valuable for analysis and modeling, presenting findings in log scale can be less intuitive for a general audience.Most people are not accustomed to thinking in terms of logarithmic scales in their daily lives.   Therefore, converting the log prices back to actual prices before presenting the results is often necessary. Actual prices give a direct, real-world interpretation of the costs involved.
  
 ## Data Preprocessing
 To prepare the data for modeling, we performed the following preprocessing steps:
