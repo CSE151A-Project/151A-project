@@ -7,9 +7,25 @@ This project aims to predict the renting prices in different cities using variou
 
 ## Dataset Description
 
+The dataset comprises listings with features that describe the property, host, and booking policies. Here are some key details:
+
 Number of Instances (records in the data set): __74111__
 
 Number of Attributes (fields within each record, including the class): __29__
+
+Number of Observations: xxxxxxxxxxxxxxxxx, which describe the total number of listings included.
+Target Variable: The target variable is the renting price, which we aim to predict.
+Features: The dataset includes binary features:
+property_type
+room_type
+bed_type
+cancellation_policy
+city
+cleaning_fee
+host_has_profile_pic
+host_identity_verified
+instant_bookable
+These features have been encoded as binary (0 or 1) to indicate the presence or absence of a particular attribute.
 
 ## Data Cleaning and Preprocessing Overview
 
@@ -26,8 +42,14 @@ In this analysis, we perform several steps to clean and preprocess the Airbnb da
    2. Missing values in 'host_response_rate' and 'review_scores_rating' are imputed with their respective median values. Before imputation, the 'host_response_rate' is converted from a percentage string to a float.
 
 ## Plots and Visualizations
-Scatter plots, histograms, and box plots were used to visualize the data. ???
+In this analysis, heatmap, pairplot, and box plots were used to visualize the data. Based on the visualized data, we will need to do data preprocessing on following collomns:
 
+1. One-Hot Encoding
+   1. We draw box plots for each colomns contains catergory data to illustrate the relationship between the data and Airbnb price. We found that there is certain relations between the catergory data and Airbnb price. Some catergory would be much higher Airbnb price than others. Thus, we will neet to One-Hot Encoding the columns to include them as features in the after machine learning process.
+2. Normalization and Standardization:
+   1. Our data need to be normalized since some feature have a large number, such as number_of_reviews. It is range from 0 - 600. These features are measured on different scales and have different ranges of values, so normalizing them would ensure that each feature contributes approximately proportionately to the final result. 
+   2. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
+ 
 ## Data Preprocessing
 To prepare the data for modeling, we performed the following preprocessing steps:
 
