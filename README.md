@@ -63,15 +63,13 @@ To prepare the data for modeling, we performed the following preprocessing steps
    
    We built our models using 1st, 2nd, and 3rd Polynomial Regression. 
 
-   1. The linear regression model, result in large Mean Squared Error (MSE), indicating substantial errors in prediction. This model might be underfitting or overfitting the data, failing to capture the true relationship between the variables.
+   1. The linear regression model yields a Mean Squared Error (MSE) of approximately 0.1927, indicating a moderate level of error in prediction. While not ideal, this suggests that the model captures a reasonable amount of the variance in the data. Further analysis is needed to assess potential underfitting or overfitting and to refine the model accordingly.
    
-   2. The second-degree polynomial regression model offers improved predictive performance, as evidenced by its relatively smaller MSE. However, the R2 score, being negative (-58.44), is highly unusual. Negative values indicate that the model performs no better than a naive baseline. 
-      1. The model might be severely overfitting the data, capturing noise instead of signal. This overfitting leads to a poor overall fit to the data and a negative R2 score.
-      2. There might be systematic biases or errors in the model that are not captured by the MSE but are reflected in the R2 score.
-      3. The data might have inherent complexities or patterns that the model fails to capture adequately, leading to poor performance overall.
+   2. The second-degree polynomial regression model shows slight improvement over the linear model, with a slightly lower MSE of approximately 0.1868. Additionally, the model achieves a relatively high R2 score of approximately 0.6444, indicating that around 64.44% of the variance in the dependent variable is explained by the independent variables. This suggests that the model captures more of the underlying complexity in the data compared to the linear model.
    
    3. I didn't get the result of 3rd-degree polynomial regression model after runing it for 1 hour.
 
+   In conclusion, while both models provide valuable insights, the second-degree polynomial regression model demonstrates slightly better performance in terms of predictive accuracy, as evidenced by its lower MSE. However, further analysis may be necessary to ensure that the model's performance is robust and generalizable to unseen data.
    To potentially improve the performance of our regression model, several strategies can be considered:
 
       1. Cross-validation: Consider techniques like k-fold cross-validation or leave-one-out cross-validation.
