@@ -60,16 +60,24 @@ To prepare the data for modeling, we performed the following preprocessing steps
 ## Conclusion
 
 1. First model: Linear & Polynomial Regression
+   
    We built our models using 1st, 2nd, and 3rd Polynomial Regression. 
-   1. The linear regression model, while straightforward, exhibits limitations in capturing the non-linear relationships present in the data. This limitation is reflected in its large Mean Squared Error (MSE), indicating substantial errors in prediction. It might be underfitting or overfitting the data, failing to capture the true relationship between the variables.
-   2. The second-degree polynomial regression model offers improved predictive performance, as evidenced by its relatively smaller MSE. By allowing for curvature in the relationship between the independent and dependent variables, the second-degree polynomial model better captures the complexities inherent in the data. However,The R2 score, being negative (-58.44), is highly unusual. Negative values indicate that the model performs no better than a naive baseline.
+
+   1. The linear regression model, result in large Mean Squared Error (MSE), indicating substantial errors in prediction. This model might be underfitting or overfitting the data, failing to capture the true relationship between the variables.
+   
+   2. The second-degree polynomial regression model offers improved predictive performance, as evidenced by its relatively smaller MSE. The second-degree polynomial model better captures the complexities inherent in the data. However, the R2 score, being negative (-58.44), is highly unusual. Negative values indicate that the model performs no better than a naive baseline. 
       1. The model might be severely overfitting the data, capturing noise instead of signal. This overfitting leads to a poor overall fit to the data and a negative R2 score.
       2. There might be systematic biases or errors in the model that are not captured by the MSE but are reflected in the R2 score.
       3. The data might have inherent complexities or patterns that the model fails to capture adequately, leading to poor performance overall.
+   
    3. I didn't the result of 3rd-degree polynomial regression model after runing it for 1 hour.
 
    To potentially improve the performance of your regression model, several strategies can be considered:
-   4. Cross-validation: Consider techniques like k-fold cross-validation or leave-one-out cross-validation.
-   5. Observe the dataset: Explore additional features or transformations of existing features that might better capture the underlying relationships in the data.
-   6. Outlier Detection and Removal: Identify and remove outliers or influential data points that might disproportionately affect the model's performance. 
-   7. Model Selection: Experiment with different regression algorithms and model architectures to find the most suitable approach for your specific dataset. 
+
+      1. Cross-validation: Consider techniques like k-fold cross-validation or leave-one-out cross-validation.
+   
+      2. Observe the dataset: Explore additional features or transformations of existing features that might better capture the underlying relationships in the data.
+   
+      3. Outlier Detection and Removal: Identify and remove outliers or influential data points that might disproportionately affect the model's performance. 
+   
+      4. Model Selection: Experiment with different regression algorithms and model architectures to find the most suitable approach for your specific dataset. 
