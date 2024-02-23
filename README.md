@@ -65,12 +65,12 @@ To prepare the data for modeling, we performed the following preprocessing steps
 
    1. The linear regression model, result in large Mean Squared Error (MSE), indicating substantial errors in prediction. This model might be underfitting or overfitting the data, failing to capture the true relationship between the variables.
    
-   2. The second-degree polynomial regression model offers improved predictive performance, as evidenced by its relatively smaller MSE. The second-degree polynomial model better captures the complexities inherent in the data. However, the R2 score, being negative (-58.44), is highly unusual. Negative values indicate that the model performs no better than a naive baseline. 
+   2. The second-degree polynomial regression model offers improved predictive performance, as evidenced by its relatively smaller MSE. However, the R2 score, being negative (-58.44), is highly unusual. Negative values indicate that the model performs no better than a naive baseline. 
       1. The model might be severely overfitting the data, capturing noise instead of signal. This overfitting leads to a poor overall fit to the data and a negative R2 score.
       2. There might be systematic biases or errors in the model that are not captured by the MSE but are reflected in the R2 score.
       3. The data might have inherent complexities or patterns that the model fails to capture adequately, leading to poor performance overall.
    
-   3. I didn't the result of 3rd-degree polynomial regression model after runing it for 1 hour.
+   3. I didn't get the result of 3rd-degree polynomial regression model after runing it for 1 hour.
 
    To potentially improve the performance of our regression model, several strategies can be considered:
 
@@ -79,5 +79,3 @@ To prepare the data for modeling, we performed the following preprocessing steps
       2. Observe the dataset: Explore additional features or transformations of existing features that might better capture the underlying relationships in the data.
    
       3. Outlier Detection and Removal: Identify and remove outliers or influential data points that might disproportionately affect the model's performance. 
-   
-      4. Model Selection: Experiment with different regression algorithms and model architectures to find the most suitable approach for your specific dataset. 
