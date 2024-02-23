@@ -72,7 +72,7 @@ To prepare the data for modeling, we performed the following preprocessing steps
    
    3. I didn't the result of 3rd-degree polynomial regression model after runing it for 1 hour.
 
-   To potentially improve the performance of your regression model, several strategies can be considered:
+   To potentially improve the performance of our regression model, several strategies can be considered:
 
       1. Cross-validation: Consider techniques like k-fold cross-validation or leave-one-out cross-validation.
    
