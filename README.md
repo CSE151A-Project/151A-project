@@ -56,6 +56,20 @@ To prepare the data for modeling, we performed the following preprocessing steps
 4. Based on the bar chart, it appears that 'host_identity_verified' and 'instant_bookable' may have a minimal impact on pricing. So we might also consider dropping these 2 column.
 
 5. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
+   
+## Next Two Models
+
+1. XGBoost (Extreme Gradient Boosting):
+XGBoost is a powerful and popular machine learning algorithm known for its performance in structured/tabular data and its ability to handle complex relationships within the data.
+   - XGBoost is robust to overfitting and can handle a large number of features, making it suitable for this dataset with 29 attributes.
+   - It can capture non-linear relationships between features and the target variable, which might not be effectively captured by linear or polynomial regression models.
+   - It provides feature importance scores, which can help in understanding the relative importance of different features in predicting renting prices.
+
+2. Neural Networks (NN):
+Neural networks, particularly deep learning architectures, have gained popularity in various domains due to their ability to learn complex patterns from data.
+   - Neural networks can capture intricate patterns and relationships in the data, potentially outperforming traditional models like regression or tree-based methods.
+   - They are capable of automatically learning feature representations from the data, eliminating the need for manual feature engineering.
+
 
 ## Conclusion
 
