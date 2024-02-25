@@ -73,7 +73,7 @@ Neural networks, particularly deep learning architectures, have gained popularit
 
 ## Conclusion
 
-1. First model: Linear & Polynomial Regression
+1. First model: 2nd degree Polynomial Regression
    
    We built our models using 2nd degree Polynomial Regression. 
 
