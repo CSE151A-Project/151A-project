@@ -75,15 +75,10 @@ Neural networks, particularly deep learning architectures, have gained popularit
 
 1. First model: Linear & Polynomial Regression
    
-   We built our models using 1st, 2nd, and 3rd Polynomial Regression. 
+   We built our models using 2nd degree Polynomial Regression. 
 
-   1. The linear regression model yields a Mean Squared Error (MSE) of approximately 0.1927, indicating a moderate level of error in prediction. While not ideal, this suggests that the model captures a reasonable amount of the variance in the data. Further analysis is needed to assess potential underfitting or overfitting and to refine the model accordingly.
+   The second-degree polynomial regression model yields a Mean Squared Error (MSE) of approximately  0.1868, indicating a moderate level of error in prediction. Additionally, the model achieves a relatively high R2 score of approximately 0.6444, indicating that around 64.44% of the variance in the dependent variable is explained by the independent variables. This suggests that the second-degree polynomial regression model provides a reasonable fit to the data, explaining a significant portion of the variability in the dependent variable. However, the moderate MSE indicates that there is still room for improvement in prediction accuracy. 
    
-   2. The second-degree polynomial regression model shows slight improvement over the linear model, with a slightly lower MSE of approximately 0.1868. Additionally, the model achieves a relatively high R2 score of approximately 0.6444, indicating that around 64.44% of the variance in the dependent variable is explained by the independent variables. This suggests that the model captures more of the underlying complexity in the data compared to the linear model.
-   
-   3. I didn't get the result of 3rd-degree polynomial regression model after runing it for 1 hour.
-
-   In conclusion, while both models provide valuable insights, the second-degree polynomial regression model demonstrates slightly better performance in terms of predictive accuracy, as evidenced by its lower MSE. However, further analysis may be necessary to ensure that the model's performance is robust and generalizable to unseen data.
    To potentially improve the performance of our regression model, several strategies can be considered:
 
       1. Cross-validation: Consider techniques like k-fold cross-validation or leave-one-out cross-validation.
