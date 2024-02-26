@@ -63,6 +63,7 @@ To prepare the data for modeling, we performed the following preprocessing steps
 ### More data preprocessing
 
 1. norm & standard
+Both of them have their own advantages, and we first consider to use min-max because it makes us easy to interpret the data. However, We finally choose to use standardization for our project because we consider that it is less sensitivec to those outliers compared with min-max normalization. After the exploration of the data, we find that there are some outliers in the dataset which may affect the result greatly if we do not use standardization.
 
 2. BoW & TF-IDF:
 To utilize the 'description' and 'name' feature in training, we first need to transform each description into a vector and then discover the relationship between the descriptions and the log price. We use Bag of Words (BOW) and TF-IDF techniques, respectively, during the transformation process. We initially train the transformed vectors with the log price using a linear regression (LR) model, so that the model's theta learns the potential relationship between the description vector and the log price. We extract the theta of the LR model based on the words in each description. Then, we sum up the values of the corresponding theta and append the result as a new feature to our final training set.
