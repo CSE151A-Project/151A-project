@@ -82,16 +82,23 @@ Visual analysis aimed to gain insights into the model and guide the improving st
 
 ### Next Two Models
 
-1. XGBoost (Extreme Gradient Boosting):
-XGBoost is a powerful and popular machine learning algorithm known for its performance in structured/tabular data and its ability to handle complex relationships within the data.
-   - XGBoost is robust to overfitting and can handle a large number of features, making it suitable for this dataset with 29 attributes.
-   - It can capture non-linear relationships between features and the target variable, which might not be effectively captured by linear or polynomial regression models.
-   - It provides feature importance scores, which can help in understanding the relative importance of different features in predicting renting prices.
+1.   XGBoost (Extreme Gradient Boosting):
+XGBoost is a powerful and popular machine learning algorithm known for its performance in structured/tabular data and its ability to handle complex relationships within the data:
 
-2. Neural Networks (NN):
-Neural networks, particularly deep learning architectures, have gained popularity in various domains due to their ability to learn complex patterns from data.
-   - Neural networks can capture intricate patterns and relationships in the data, potentially outperforming traditional models like regression or tree-based methods.
-   - They are capable of automatically learning feature representations from the data, eliminating the need for manual feature engineering.
+- XGBoost is robust to overfitting and can handle a large number of features, making it suitable for this dataset with 29 attributes.
+- It can capture non-linear relationships between features and the target variable, which might not be effectively captured by linear or polynomial regression models.
+- XGBoost often performs well in competitions and real-world applications, making it a reliable choice for predictive modeling tasks.
+- It provides feature importance scores, which can help in understanding the relative importance of different features in predicting renting prices.
+
+2.   Neural Networks (NN):
+Neural networks, particularly deep learning architectures,which can learn complex patterns from data:
+
+- Neural networks can capture intricate patterns and relationships in the data, potentially outperforming traditional models like regression or tree-based methods.
+- They are capable of automatically learning feature representations from the data, eliminating the need for manual feature engineering.
+- With advancements in hardware and software frameworks (e.g., TensorFlow, PyTorch), training neural networks has become more accessible and efficient.
+- Architectures like feedforward neural networks, convolutional neural networks (CNNs), or recurrent neural networks (RNNs) can be explored based on the nature of the data and the problem at hand.
+
+Both XGBoost and neural networks offer flexibility and scalability, allowing for experimentation with different architectures, hyperparameters, and feature engineering techniques to improve predictive performance.   Additionally, ensemble methods like stacking or blending could also be considered to combine the strengths of multiple models and potentially achieve better results.
 
 
 ### Conclusion
