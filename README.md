@@ -1,6 +1,7 @@
 # 151A-project
 
-## Milestone 2
+## [Milestone 2](Milestone2.ipynb)
+
 ### About the Data Set
 This project aims to predict the renting prices in different cities using various features from the dataset, such as property type, room type, bed type, cancellation policy, city, cleaning fee, host profile picture availability, host identity verification, and instant bookability. Our goal is to understand how these features influence renting prices and to build a predictive model to assist renters and landlords alike.
 
@@ -56,7 +57,8 @@ To prepare the data for modeling, we performed the following preprocessing steps
 
 5. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
 
-## Milestone 3
+## [Milestone 3](Milestone3.ipynb)
+
 
 ### More data preprocessing
 
