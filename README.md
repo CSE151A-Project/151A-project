@@ -69,7 +69,7 @@ To utilize the 'description' and 'name' feature in training, we first need to tr
 
 4. Fix perfect multicollinearity: Perfect multicollinearity happens when one variable can be perfectly predicted from the others, causing issues in regression models by inflating the variance of the coefficient estimates, which can lead to a very large MSE. By setting drop_first=True, the function will drop the first level for each categorical variable. This effectively removes one dummy variable from each set of dummies derived from a categorical variable, thus eliminating the perfect multicollinearity that occurs when all dummy variables for a category are included.
 
-## Plots and Visualizations
+### Plots and Visualizations
 
 Visual analysis aimed to gain insights into the model and guide the improving steps. The following visualizations were created:
 
