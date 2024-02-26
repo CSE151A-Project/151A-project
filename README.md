@@ -69,6 +69,16 @@ To utilize the 'description' and 'name' feature in training, we first need to tr
 
 4. Fix perfect multicollinearity: Perfect multicollinearity happens when one variable can be perfectly predicted from the others, causing issues in regression models by inflating the variance of the coefficient estimates, which can lead to a very large MSE. By setting drop_first=True, the function will drop the first level for each categorical variable. This effectively removes one dummy variable from each set of dummies derived from a categorical variable, thus eliminating the perfect multicollinearity that occurs when all dummy variables for a category are included.
 
+## Plots and Visualizations
+
+Visual analysis aimed to gain insights into the model and guide the improving steps. The following visualizations were created:
+
+1. **Sampled Residuals vs. Predicted Values Plot:** This scatter plot showcases the residuals of our predictions versus the actual values. A horizontal dashed line at 0 represents a perfect prediction. Most residuals cluster around this line within a reasonable range, although there is some noticeable spread, indicating variability in the prediction error.
+![](graphs/residuals.png)
+
+1. **Prediction line Plot:** The second visualization presents a scatter plot comparing ground truth values with our predictions. The solid red line represents a perfect fit alongside our prediction trend. The line of best fit is plotted through the predictions to illustrate the correlation. The closer the blue points and the trend line are to the perfect fit line, the more accurate our predictions.
+![](graphs/regression.png)
+
 
 ### Next Two Models
 
