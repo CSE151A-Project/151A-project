@@ -1,11 +1,10 @@
 # 151A-project
 
-
-## About the Data Set
+## Milestone 2
+### About the Data Set
 This project aims to predict the renting prices in different cities using various features from the dataset, such as property type, room type, bed type, cancellation policy, city, cleaning fee, host profile picture availability, host identity verification, and instant bookability. Our goal is to understand how these features influence renting prices and to build a predictive model to assist renters and landlords alike.
 
-
-## Dataset Description
+### Dataset Description
 
 The dataset comprises listings with features that describe the property, host, and booking policies. Here are some key details:
 
@@ -15,7 +14,7 @@ Number of Attributes (fields within each record, including the class): __29__
 
 Target Variable: The target variable is the renting price(log_price), which we aim to predict.
 
-## Data Cleaning and Preprocessing Overview
+### Data Cleaning and Preprocessing Overview
 
 In this analysis, we perform several steps to clean and preprocess the Airbnb dataset to prepare it for further analysis and modeling. The process involves handling missing values, encoding categorical variables, and ensuring data integrity. Below are the detailed steps undertaken:
 
@@ -30,7 +29,7 @@ In this analysis, we perform several steps to clean and preprocess the Airbnb da
    2. Missing values in 'host_response_rate' and 'review_scores_rating' are imputed with their respective median values. Before imputation, the 'host_response_rate' is converted from a percentage string to a float.
    3. We drop latitude and longitude column because it is difficult to process this kind of data and we already have City column.
 
-## Plots and Visualizations
+### Plots and Visualizations
 In this analysis, heatmap, pairplot, and box plots were used to visualize the data. Based on the visualized data, we will need to do data preprocessing on following collomns:
 1. Creating a boxplot for the distribution of bathrooms, bedrooms, and beds to identify outliers.
 
@@ -44,7 +43,7 @@ In this analysis, heatmap, pairplot, and box plots were used to visualize the da
 
 6. For These 9 price and type plot,while log-transformed prices are valuable for analysis and modeling, presenting findings in log scale can be less intuitive for a general audience.Most people are not accustomed to thinking in terms of logarithmic scales in their daily lives.   Therefore, converting the log prices back to actual prices before presenting the results is often necessary. Actual prices give a direct, real-world interpretation of the costs involved.
  
-## Data Preprocessing
+### Data Preprocessing
 To prepare the data for modeling, we performed the following preprocessing steps:
 
 1. Min-Max Normalization: Applied to numerical features to bring them to a scale between 0 and 1, improving model performance and stability.
@@ -56,8 +55,22 @@ To prepare the data for modeling, we performed the following preprocessing steps
 4. Based on the bar chart, it appears that 'host_identity_verified' and 'instant_bookable' may have a minimal impact on pricing. So we might also consider dropping these 2 column.
 
 5. Standardization is needed since accommodates, bathrooms, number_of_reviews, review_scores_rating, bedrooms, and beds are skewed. This would ensure that they all contribute equally to the analysis and that the model's performance is not inadvertently influenced by the natural variance in the dataset.
-   
-## Next Two Models
+
+## Milestone 3
+
+### More data preprocessing
+
+1. norm & standard
+
+2. BoW & TF-IDF:
+To utilize the 'description' and 'name' feature in training, we first need to transform each description into a vector and then discover the relationship between the descriptions and the log price. We use Bag of Words (BOW) and TF-IDF techniques, respectively, during the transformation process. We initially train the transformed vectors with the log price using a linear regression (LR) model, so that the model's theta learns the potential relationship between the description vector and the log price. We extract the theta of the LR model based on the words in each description. Then, we sum up the values of the corresponding theta and append the result as a new feature to our final training set.
+
+3. Sentiment: It calculates the sentiment score of a description by summing up the sentiment scores of each word in the cleaned 'description' and 'name'. If a word is not found in the sentiment_dict, its sentiment score is considered as 0.
+
+4. Fix perfect multicollinearity: Perfect multicollinearity happens when one variable can be perfectly predicted from the others, causing issues in regression models by inflating the variance of the coefficient estimates, which can lead to a very large MSE. By setting drop_first=True, the function will drop the first level for each categorical variable. This effectively removes one dummy variable from each set of dummies derived from a categorical variable, thus eliminating the perfect multicollinearity that occurs when all dummy variables for a category are included.
+
+
+### Next Two Models
 
 1. XGBoost (Extreme Gradient Boosting):
 XGBoost is a powerful and popular machine learning algorithm known for its performance in structured/tabular data and its ability to handle complex relationships within the data.
@@ -71,7 +84,7 @@ Neural networks, particularly deep learning architectures, have gained popularit
    - They are capable of automatically learning feature representations from the data, eliminating the need for manual feature engineering.
 
 
-## Conclusion
+### Conclusion
 
 1. First model: 2nd degree Polynomial Regression
    
