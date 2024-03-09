@@ -30,8 +30,18 @@ XGBoost is a powerful and popular machine learning algorithm known for its perfo
 
 ### Conclusion
 
-1. 
+1. Second Model: Neural Networks (NN) with Hyper Tuning
 
-   By leveraging hyperparameter tuning techniques, we meticulously optimized our predictive model, achieving a validation mean squared error (MSE) of approximately 0.182, showcasing the effectiveness of the chosen neural network architectures. Subsequent training with XGBoost further refined our model, resulting in a training MSE of 0.159 and a testing MSE of 0.181, indicative of its robust performance on unseen data. Additionally, K-fold cross-validation confirmed the consistency of our model's performance, with a mean MSE of approximately 0.186 across all folds, underscoring its reliability and generalization capability. This comprehensive approach, combining hyperparameter tuning with ensemble techniques, has yielded a model with promising predictive capabilities and potential for real-world applications. 
+   The model development process involved initially building a neural network (NN) architecture with predetermined hyperparameters, yielding a Mean Squared Error (MSE) of 0.1935 on the test set. Subsequently, hyperparameter tuning was employed to optimize the model's performance, resulting in a reduction of the validation loss to 0.1883, indicating an improvement in predictive accuracy. Upon applying the best hyperparameters identified through tuning, the model achieved a lower MSE of 0.1905 on the test set. This iterative process demonstrates the effectiveness of hyperparameter tuning in fine-tuning the neural network's architecture and configuration to enhance its predictive capabilities. The model's performance, with a validation loss as low as 0.185, underscores its potential for accurately predicting Airbnb prices. However, it's essential to note that further experimentation and refinement could potentially yield even better results. 
+
+   To further improve the model's performance in predicting Airbnb prices, several strategies can be considered:
+
+   1. Explore More Complex Architectures
+
+   2. Regularization Techniques
+
+   3. Advanced Activation Functions
+
+   Our neural network (NN) model, which achieved a Mean Squared Error (MSE) of approximately 0.1935, performed slightly worse in terms of prediction accuracy compared to the first model utilizing second-degree polynomial regression. The polynomial regression model had an MSE of approximately 0.1868, indicating a lower level of error in its predictions. However, it's important to consider that neural networks are generally more flexible and capable of capturing complex relationships in the data compared to polynomial regression models.
+
    
-   Further refinements could involve exploring advanced ensemble strategies or incorporating additional features to enhance predictive accuracy and robustness.
