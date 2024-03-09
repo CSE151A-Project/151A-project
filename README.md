@@ -42,6 +42,6 @@ XGBoost is a powerful and popular machine learning algorithm known for its perfo
 
    3. Advanced Activation Functions
 
-   Our neural network (NN) model, which achieved a Mean Squared Error (MSE) of approximately 0.1935, performed slightly worse in terms of prediction accuracy compared to the first model utilizing second-degree polynomial regression. The polynomial regression model had an MSE of approximately 0.1868, indicating a lower level of error in its predictions. However, it's important to consider that neural networks are generally more flexible and capable of capturing complex relationships in the data compared to polynomial regression models.
+   Our neural network (NN) model, which achieved a Mean Squared Error (MSE) of approximately 0.1905, performed slightly worse in terms of prediction accuracy compared to the first model utilizing second-degree polynomial regression. The polynomial regression model had an MSE of approximately 0.1868, indicating a lower level of error in its predictions. However, it's important to consider that neural networks are generally more flexible and capable of capturing complex relationships in the data compared to polynomial regression models.
 
    
