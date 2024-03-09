@@ -10,6 +10,13 @@
 ### Hyper parameter tuning
 -activation, random search, early stop, etc
 
+In our project, we employ hyperparameter tuning to optimize the configuration of our neural network model, leveraging the Keras Tuner for this purpose. The build_hp_model function dynamically constructs the model based on a range of hyperparameters, allowing for an exploration of different model architectures. It sets up a sequential model with a variable number of dense layers, each configured with a unit count ranging between 16 and 96 and using the 'leaky_relu' activation function to mitigate the vanishing gradient problem. The final layer, designed for regression, has a single unit. The learning rate for the Adam optimizer is also varied across a logarithmic scale from 1e-4 to 1e-2, enabling a comprehensive search across different magnitudes of learning rates.
+
+Two Keras callbacks are utilized to enhance the training process:
+
+Early Stopping: Monitors the validation loss and stops training if there hasn't been a significant decrease (less than 0.001) in the validation loss for 5 consecutive epochs. This prevents overfitting and ensures the model restores the weights from the epoch with the best performance.
+Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower validation loss is observed. This ensures that the model configuration with the best validation performance is preserved, even if the model's performance degrades in subsequent epochs.
+
 
 ### Plots and Visualizations
 
