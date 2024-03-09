@@ -119,3 +119,9 @@ Both XGBoost and neural networks offer flexibility and scalability, allowing for
       2. Observe the dataset: Explore additional features or transformations of existing features that might better capture the underlying relationships in the data.
    
       3. Outlier Detection and Removal: Identify and remove outliers or influential data points that might disproportionately affect the model's performance. 
+
+2. Second model: Hyperparameter Tuning 
+
+   By leveraging hyperparameter tuning techniques, we meticulously optimized our predictive model, achieving a validation mean squared error (MSE) of approximately 0.182, showcasing the effectiveness of the chosen neural network architectures. Subsequent training with XGBoost further refined our model, resulting in a training MSE of 0.159 and a testing MSE of 0.181, indicative of its robust performance on unseen data. Additionally, K-fold cross-validation confirmed the consistency of our model's performance, with a mean MSE of approximately 0.186 across all folds, underscoring its reliability and generalization capability. This comprehensive approach, combining hyperparameter tuning with ensemble techniques, has yielded a model with promising predictive capabilities and potential for real-world applications. 
+   
+   Further refinements could involve exploring advanced ensemble strategies or incorporating additional features to enhance predictive accuracy and robustness.
