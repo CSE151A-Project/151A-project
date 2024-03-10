@@ -15,7 +15,14 @@ In our project, we employ hyperparameter tuning to optimize the configuration of
 Two Keras callbacks are utilized to enhance the training process:
 
 Early Stopping: Monitors the validation loss and stops training if there hasn't been a significant decrease (less than 0.001) in the validation loss for 5 consecutive epochs. This prevents overfitting and ensures the model restores the weights from the epoch with the best performance.
+
+
 Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower validation loss is observed. This ensures that the model configuration with the best validation performance is preserved, even if the model's performance degrades in subsequent epochs.
+
+
+Result: 
+
+Best hyperparameters found were:  {'num_layers': 3, 'units_0': 48, 'activation_0': 'leaky_relu', 'units_1': 48, 'activation_1': 'leaky_relu', 'learning_rate': 0.0006752863927347823, 'units_2': 16, 'activation_2': 'leaky_relu', 'units_3': 80, 'activation_3': 'leaky_relu', 'units_4': 96, 'activation_4': 'leaky_relu'} with Mean Squared Error on Test Set: 0.1904602348804474
 
 
 ### Plots and Visualizations
