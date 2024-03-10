@@ -41,6 +41,22 @@ XGBoost is a powerful and popular machine learning algorithm known for its perfo
 - XGBoost often performs well in competitions and real-world applications, making it a reliable choice for predictive modeling tasks.
 - It provides feature importance scores, which can help in understanding the relative importance of different features in predicting renting prices.
 
+### XGBoost Model K-Fold Cross-Validation
+
+We performed K-fold cross-validation on our dataset using the XGBoost algorithm to predict Airbnb listing prices. This approach helps us to understand how well our model generalizes on unseen data by dividing the dataset into `k` distinct subsets (or folds), then iteratively training the model on `k-1` subsets while using the remaining subset for validation. The process is repeated `k` times, with each subset serving as the validation set exactly once.
+
+#### Cross-Validation Parameters
+- **Objective**: Regression with squared error.
+- **Max Depth**: 5 layers to control the complexity of the model.
+- **Eta (Learning Rate)**: 0.3 to control the model's learning rate.
+- **Evaluation Metric**: Root Mean Squared Error (RMSE), a standard metric for regression tasks.
+
+#### Results
+After performing 5-fold cross-validation, the model demonstrated the following results:
+- **Mean RMSE**: 0.42461, indicating the average error across all folds.
+- **Standard Deviation of RMSE**: 0.00387, showing the variability in the RMSE across folds. This low standard deviation suggests that the model's performance is relatively consistent across different subsets of the data.
+
+The detailed training process showed a steady decrease in RMSE from the initial rounds to the final iteration.The XGBoost model's performance, as evidenced by K-fold cross-validation, suggests it is a reliable and consistent approach for predicting Airbnb listing prices. The relatively low and stable RMSE across folds signifies good model generalization. Further optimization and testing may refine the model, potentially leading to even more accurate predictions.
 
 ### Conclusion
 
