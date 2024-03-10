@@ -5,7 +5,7 @@
 
 1. KFold Target encoding
 
-
+   Implementing K-Fold target encoding to mitigate the high dimensionality issue often encountered with one-hot encoding, especially beneficial for neural network models. Where categorical features are replaced with the mean value of a target variable ('log_price') computed from each fold of the training data, to prevent data leakage.
 
 ### Hyper parameter tuning
 -activation, random search, early stop, etc
