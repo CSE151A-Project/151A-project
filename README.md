@@ -22,7 +22,9 @@ Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower
 
 improvement after tuning, overfitting?
 
-1. 
+
+![](graphs/Neural%20Network.png) 
+![](graphs/Best%20Model.png)
 
 ### Next Model
 
