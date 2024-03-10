@@ -19,11 +19,16 @@ Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower
 
 
 ### Plots and Visualizations
+#### Original Neural Network Loss: 
+The mse of the orginal neural network is 0.1917, which is slightly lower than the mse of our previous polynomial model. 
+The following plot shows the the change of loss as training epochs increase. The loss is decreasing as the model is trained with more epochs.
+However, the plot also indicates a potential of overfitting. In order to improve the neural network, we did hyperparameter tuning and had the results shown in the second plot. 
 
-improvement after tuning, overfitting?
 
 
 ![](graphs/Neural%20Network.png) 
+#### Tuned Neural Network Loss: 
+This following graph shows the relationship between loss and epochs for our tuned model. Although the plot still shows some overfitting, the loss of the tuned model is generally lower than the loss of the original model. The mse is 0.1904, indicating improvements in the tuned model. 
 ![](graphs/Best%20Model.png)
 
 ### Next Model
