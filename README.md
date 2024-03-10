@@ -25,44 +25,24 @@ The following plot shows the the change of loss as training epochs increase. The
 However, the plot also indicates a potential of overfitting. In order to improve the neural network, we did hyperparameter tuning and had the results shown in the second plot. 
 
 
-
 ![](graphs/Neural%20Network.png) 
 #### Tuned Neural Network Loss: 
 This following graph shows the relationship between loss and epochs for our tuned model. Although the plot still shows some overfitting, the loss of the tuned model is generally lower than the loss of the original model. The mse is 0.1904, indicating improvements in the tuned model. 
 ![](graphs/Best%20Model.png)
 
 ### Next Model
-
 1.   XGBoost (Extreme Gradient Boosting):
 XGBoost is a powerful and popular machine learning algorithm known for its performance in structured/tabular data and its ability to handle complex relationships within the data:
-
-- XGBoost is robust to overfitting and can handle a large number of features, making it suitable for this dataset with 29 attributes.
-- It can capture non-linear relationships between features and the target variable, which might not be effectively captured by linear or polynomial regression models.
-- XGBoost often performs well in competitions and real-world applications, making it a reliable choice for predictive modeling tasks.
-- It provides feature importance scores, which can help in understanding the relative importance of different features in predicting renting prices.
-
-### XGBoost Model K-Fold Cross-Validation
-
-We performed K-fold cross-validation on our dataset using the XGBoost algorithm to predict Airbnb listing prices. This approach helps us to understand how well our model generalizes on unseen data by dividing the dataset into `k` distinct subsets (or folds), then iteratively training the model on `k-1` subsets while using the remaining subset for validation. The process is repeated `k` times, with each subset serving as the validation set exactly once.
-
-#### Cross-Validation Parameters
-- **Objective**: Regression with squared error.
-- **Max Depth**: 5 layers to control the complexity of the model.
-- **Eta (Learning Rate)**: 0.3 to control the model's learning rate.
-- **Evaluation Metric**: Root Mean Squared Error (RMSE), a standard metric for regression tasks.
-
-#### Results
-After performing 5-fold cross-validation, the model demonstrated the following results:
-- **Mean RMSE**: 0.42461, indicating the average error across all folds.
-- **Standard Deviation of RMSE**: 0.00387, showing the variability in the RMSE across folds. This low standard deviation suggests that the model's performance is relatively consistent across different subsets of the data.
-
-The detailed training process showed a steady decrease in RMSE from the initial rounds to the final iteration.The XGBoost model's performance, as evidenced by K-fold cross-validation, suggests it is a reliable and consistent approach for predicting Airbnb listing prices. The relatively low and stable RMSE across folds signifies good model generalization. Further optimization and testing may refine the model, potentially leading to even more accurate predictions.
+     - XGBoost is robust to overfitting and can handle a large number of features, making it suitable for this dataset with 29 attributes.
+     - It can capture non-linear relationships between features and the target variable, which might not be effectively captured by linear or polynomial regression models.
+     - XGBoost often performs well in competitions and real-world applications, making it a reliable choice for predictive modeling tasks.
+     - It provides feature importance scores, which can help in understanding the relative importance of different features in predicting renting prices.
 
 ### Conclusion
 
 1. Second Model: Neural Networks (NN) with Hyper Tuning
 
-   The model development process involved initially building a neural network (NN) architecture with predetermined hyperparameters, yielding a Mean Squared Error (MSE) of 0.1935 on the test set. Subsequently, hyperparameter tuning was employed to optimize the model's performance, resulting in a reduction of the validation loss to 0.1883, indicating an improvement in predictive accuracy. Upon applying the best hyperparameters identified through tuning, the model achieved a lower MSE of 0.1905 on the test set. This iterative process demonstrates the effectiveness of hyperparameter tuning in fine-tuning the neural network's architecture and configuration to enhance its predictive capabilities. The model's performance, with a validation loss as low as 0.185, underscores its potential for accurately predicting Airbnb prices. However, it's essential to note that further experimentation and refinement could potentially yield even better results. 
+   The model development process involved initially building a neural network (NN) architecture with predetermined hyperparameters, yielding a Mean Squared Error (MSE) of 0.1917 on the test set. Subsequently, hyperparameter tuning was employed to optimize the model's performance, resulting in a reduction of the validation loss to 0.1877, indicating an improvement in predictive accuracy. Upon applying the best hyperparameters identified through tuning, the model achieved a lower MSE of 0.1905 on the test set. This iterative process demonstrates the effectiveness of hyperparameter tuning in fine-tuning the neural network's architecture and configuration to enhance its predictive capabilities. The model's performance, with a validation loss as low as 0.1877, underscores its potential for accurately predicting Airbnb prices. However, it's essential to note that further experimentation and refinement could potentially yield even better results. 
 
    To further improve the model's performance in predicting Airbnb prices, several strategies can be considered:
 
