@@ -64,8 +64,8 @@ This project aims to predict the renting prices in different cities using variou
    2. KFold Target encoding:
       1. Due to the high dimensionality encountered with one-hot encoding, we implemented K-Fold target encoding to mitigate the issue. Target encoding is especially beneficial for neural network models. Where categorical features are replaced with the mean value of a target variable ('log_price') computed from each fold of the training data, to prevent data leakage.
    3. Leave One Out (LOO):
-      1. We tried LOO after target encoding, but obtained a MSE of 0.003 with our final model, which was dramastically lower than the prior MSE. We attemptted to find the reason that caused the reduction of the MSE but failed. Therefore, we decided not to ultilize this encoding technique until we find the reason.
-      2. Leave-One-Out (LOO) encoding is a form of target encoding that reduces overfitting by excluding the target value of the current row when calculating the category's mean target, thereby offering a more generalizable feature representation.
+      1. Leave-One-Out (LOO) encoding is a form of target encoding that reduces overfitting by excluding the target value of the current row when calculating the category's mean target, thereby offering a more generalizable feature representation.
+      <!-- 2. We tried LOO after target encoding, but obtained a MSE of 0.003 with our final model, which was dramastically lower than the prior MSE. We attemptted to find the reason that caused the reduction of the MSE but failed. Therefore, we decided not to ultilize this encoding technique until we find the reason. -->
    
 7. Norm & Standard
    1. Both normalization and standardization have their own advantages, and we first consider to use min-max because it makes us easy to interpret the data. However, We finally choose to use standardization for our project because we consider that it is less sensitivec to those outliers compared with min-max normalization. After the exploration of the data, we find that there are some outliers in the dataset which may affect the result greatly if we do not use standardization.
@@ -83,24 +83,74 @@ This project aims to predict the renting prices in different cities using variou
    ```
 
 ### Model 2: Convolutional Neural Network (CNN)
-- We build our second model with CNN. 
-
-- We employ hyperparameter tuning to optimize the configuration of our neural network model, leveraging the Keras Tuner for this purpose. The build_hp_model function dynamically constructs the model based on a range of hyperparameters, allowing for an exploration of different model architectures. It sets up a sequential model with a variable number of dense layers, each configured with a unit count ranging between 16 and 96 and using the 'leaky_relu' activation function to mitigate the vanishing gradient problem. The final layer, designed for regression, has a single unit. The learning rate for the Adam optimizer is also varied across a logarithmic scale from 1e-4 to 1e-2, enabling a comprehensive search across different magnitudes of learning rates.
-
+- We build our second model with CNN, and train with hyperparameter tuner. 
+   ```python
+   def build_hp_model(hp):
+      model = Sequential()
+      # Iterate over the number of layers
+      for i in range(hp.Int('num_layers', 2, 6)):
+         model.add(Dense(units=hp.Int('units_' + str(i), min_value=16, max_value=96, step=16),
+                           activation=hp.Choice('activation_' + str(i), ['leaky_relu'])))
+      
+      model.add(Dense(1))  # Output layer for regression
+      learning_rate = hp.Float('learning_rate', min_value=1e-4, max_value=1e-2, sampling='LOG')
+      
+      model.compile(optimizer=keras.optimizers.legacy.Adam(learning_rate=learning_rate),
+                     loss='mean_squared_error',
+                     metrics=['mean_squared_error'])
+      return model
+   
+   tuner = keras_tuner.RandomSearch(
+    hypermodel=build_hp_model,
+    objective='val_loss',
+    max_trials=8,
+    seed=10,
+    executions_per_trial=3,
+    directory='tuner_results',
+    project_name='keras_tuner_demo',
+    overwrite=True
+   )
+   ```
 - Two Keras callbacks are utilized to enhance the training process:
 
-- Early Stopping: Monitors the validation loss and stops training if there hasn't been a significant decrease (less than 0.001) in the validation loss for 5 consecutive epochs. This prevents overfitting and ensures the model restores the weights from the epoch with the best performance.
+  - Early Stopping: Monitors the validation loss and stops training if there hasn't been a significant decrease (less than 0.001) in the validation loss for 5 consecutive epochs. This prevents overfitting and ensures the model restores the weights from the epoch with the best performance.
+      ```
+      early_stopping = keras.callbacks.EarlyStopping(
+         monitor='val_loss',
+         min_delta=0.001,
+         patience=5,
+         mode='min',
+         restore_best_weights=True,
+      )
+      ```
 
-- Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower validation loss is observed. This ensures that the model configuration with the best validation performance is preserved, even if the model's performance degrades in subsequent epochs.
+  - Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower validation loss is observed. This ensures that the model configuration with the best validation performance is preserved, even if the model's performance degrades in subsequent epochs.
+      ```
+      model_checkpoint = keras.callbacks.ModelCheckpoint(
+         filepath='best_model.h5',
+         monitor='val_loss',
+         save_best_only=True,
+         save_weights_only= False,
+         mode='min'
+      )
+      ```
+### Model 3: Extreme Gradient Boosting (XGBoost)
+- We build our third model with XGBoost.
+- This model employs the XGBoost framework to optimize a regression task, using a `GridSearchCV` to fine-tune hyperparameters over a specified grid. The key parameters include tree depth, learning rate, subsample rate, and feature sampling rate. The `XGBRegressor` is configured to minimize squared error with early stopping to prevent overfitting. The grid search explores combinations of these hyperparameters across a training dataset, evaluating performance through cross-validation to select the best model based on the negative mean squared error.
+  
+   ```python
+   param_grid = {
+   'max_depth': [3, 4, 5, 6, 7],
+   'eta': [0.01, 0.05, 0.1, 0.2],
+   'subsample': [0.6, 0.7, 0.8, 0.9],
+   'colsample_bytree': [0.6, 0.7, 0.8, 0.9],
+   }
+   xgb_model = xgb.XGBRegressor(n_estimators=250, random_state=42,objective='reg:squarederror', eval_metric='rmse',early_stopping_rounds=10)
 
-### Model 3: XGBoost
-- We performed K-fold cross-validation on our dataset using the XGBoost algorithm to predict Airbnb listing prices. This approach helps us to understand how well our model generalizes on unseen data by dividing the dataset into k distinct subsets (or folds), then iteratively training the model on k-1 subsets while using the remaining subset for validation. The process is repeated k times, with each subset serving as the validation set exactly once.
+   grid_search = GridSearchCV(estimator=xgb_model, param_grid=param_grid, cv=5, scoring='neg_mean_squared_error', verbose=False, n_jobs=-1)
 
-- Cross-Validation Parameters
-  - Objective: Regression with squared error.
-  - Max Depth: 5 layers to control the complexity of the model.
-  - Eta (Learning Rate): 0.3 to control the model's learning rate.
-  - Evaluation Metric: Root Mean Squared Error (RMSE), a standard metric for regression tasks.
+   grid_search.fit(X_train_full, y_train_full, eval_set=[(X_val, y_val)], verbose=False)
+   ```
 
 
 ## Result
