@@ -94,13 +94,13 @@ This project aims to predict the renting prices in different cities using variou
 - Model Checkpoint: Saves the model at the filepath 'checkpoints' whenever a lower validation loss is observed. This ensures that the model configuration with the best validation performance is preserved, even if the model's performance degrades in subsequent epochs.
 
 ### Model 3: XGBoost
-We performed K-fold cross-validation on our dataset using the XGBoost algorithm to predict Airbnb listing prices. This approach helps us to understand how well our model generalizes on unseen data by dividing the dataset into k distinct subsets (or folds), then iteratively training the model on k-1 subsets while using the remaining subset for validation. The process is repeated k times, with each subset serving as the validation set exactly once.
+- We performed K-fold cross-validation on our dataset using the XGBoost algorithm to predict Airbnb listing prices. This approach helps us to understand how well our model generalizes on unseen data by dividing the dataset into k distinct subsets (or folds), then iteratively training the model on k-1 subsets while using the remaining subset for validation. The process is repeated k times, with each subset serving as the validation set exactly once.
 
-Cross-Validation Parameters
-- Objective: Regression with squared error.
-- Max Depth: 5 layers to control the complexity of the model.
-- Eta (Learning Rate): 0.3 to control the model's learning rate.
-- Evaluation Metric: Root Mean Squared Error (RMSE), a standard metric for regression tasks.
+- Cross-Validation Parameters
+  - Objective: Regression with squared error.
+  - Max Depth: 5 layers to control the complexity of the model.
+  - Eta (Learning Rate): 0.3 to control the model's learning rate.
+  - Evaluation Metric: Root Mean Squared Error (RMSE), a standard metric for regression tasks.
 
 
 ## Result
