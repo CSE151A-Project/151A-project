@@ -4,3 +4,4 @@ airbnb_dataset/data.csv
 checkpoints
 tuner_results
 untitled_project
+best_model.h5
