@@ -25,8 +25,8 @@ It can be retrieved from Kaggle at: [Kaggle Dataset](https://www.kaggle.com/data
 
 3. The correlation matrix and pairplot is calculated below.
 <div style="display: flex; justify-content: center;" align="center">
-  <img src="graphs/DataExploration4.png" alt="Figure 3" width="50%">
-  <img src="graphs/DataExploration5.jpg" alt="Figure 3" width="50%">
+  <img src="graphs/DataExploration4.png" alt="Figure 3" width="45%">
+  <img src="graphs/DataExploration5.jpg" alt="Figure 3" width="45%">
 </div>
 
 ***More investigations of other attributes can be found in the [Data PreProcessing Notebook](Data_preprocessing.ipynb), which are not shown due to the limit of space.***
@@ -64,17 +64,17 @@ It can be retrieved from Kaggle at: [Kaggle Dataset](https://www.kaggle.com/data
             return sentimentScore
          ```
 
-5. Fix perfect multicollinearity
+5. Fix perfect multicollinearity(not incorporated into our model)
    1. Perfect multicollinearity happens when one variable can be perfectly predicted from the others, causing issues in regression models by inflating the variance of the coefficient estimates, which can lead to a very large MSE. By setting drop_first=True, the function will drop the first level for each categorical variable. This effectively removes one dummy variable from each set of dummies derived from a categorical variable, thus eliminating the perfect multicollinearity that occurs when all dummy variables for a category are included.
       ```python
       df_encoded = pd.get_dummies(df, columns=['cleaning_fee','host_has_profile_pic', 'host_identity_verified', 'instant_bookable'], drop_first=True)
       ```
 
 6. Encoding
-   1. One-Hot Encoding:
+   1. One-Hot Encoding(not incorporated into our model):
       1. Categorical variables such as 'property_type', 'room_type', 'bed_type', 'cancellation_policy', 'city', 'cleaning_fee', 'host_has_profile_pic', 'host_identity_verified', and 'instant_bookable' were initially one-hot encoded. This process transforms categorical variables into a format that can be used in machine learning algorithms, creating separate binary columns for each category.
    2. KFold Target encoding:
-      1. Due to the high dimensionality encountered with one-hot encoding, we implemented K-Fold target encoding to mitigate the issue. Target encoding is especially beneficial for neural network models. Where categorical features are replaced with the mean value of a target variable ('log_price') computed from each fold of the training data, to prevent data leakage.
+      1. Due to the high dimensionality encountered with one-hot encoding, we implemented K-Fold target encoding to mitigate the issue and **we will use this encoding method to evaluate our models**. Target encoding is especially beneficial for neural network models. Where categorical features are replaced with the mean value of a target variable ('log_price') computed from each fold of the training data, to prevent data leakage.
    3. Leave One Out (LOO):
       1. Leave-One-Out (LOO) encoding is a form of target encoding that reduces overfitting by excluding the target value of the current row when calculating the category's mean target, thereby offering a more generalizable feature representation.
       <!-- 2. We tried LOO after target encoding, but obtained a MSE of 0.003 with our final model, which was dramastically lower than the prior MSE. We attemptted to find the reason that caused the reduction of the MSE but failed. Therefore, we decided not to ultilize this encoding technique until we find the reason. -->
@@ -146,6 +146,12 @@ We decided to use both standardization and normalization in our project. Standar
          mode='min'
       )
       ```
+
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/loss.jpg" alt="Figure 5" width="70%">
+</div>
+The two graphs describe the progression of loss metrics over successive epochs for a baseline neural network model and an hyperparameter tuned version. Each graph tracks how the loss on the training, validation, and test data sets evolves with each epoch. The green dot identifies the epoch at which the validation loss is minimized, suggesting the most effective model prior to any overfitting.
+
 ### Model 3: Extreme Gradient Boosting (XGBoost)
 - We build our third model with XGBoost.
 - This model employs the XGBoost framework to optimize a regression task, using a `GridSearchCV` to fine-tune hyperparameters over a specified grid. The key parameters include tree depth, learning rate, subsample rate, and feature sampling rate. The `XGBRegressor` is configured to minimize squared error with early stopping to prevent overfitting. The grid search explores combinations of these hyperparameters across a training dataset, evaluating performance through cross-validation to select the best model based on the negative mean squared error.
@@ -166,76 +172,32 @@ We decided to use both standardization and normalization in our project. Standar
 
 
 ## Result
-- The result is presented in 4 aspects for validation set and test set:
-   - Mean Absolute Error (MAE)
-   - Mean Squared Error (MSE)
-   - Root Mean Squared Error (RMSE)
-   - Coefficient of Determination (R2 Score)
+- To evaluate our model, we utilized several metrics: 
+  - Mean Squared Error (MSE) is favored for its emphasis on large errors
+  - Mean Absolute Error (MAE) for its robustness to outliers and interpretability
+  - Root Mean Squared Error (RMSE) for error representation in the target's units,
+  - R-squared for indicating the model’s explanatory power in terms of the variance in the dependent variable it can predict. 
+- Each metric provides unique insights, helping us understand different aspects of the model's performance.
 
-1. 2nd Degree Polynomial Regression 
-   - Validation Set Metrics:
-      - MAE: 0.327352408724221
-      - MSE: 0.19008515355141414
-      - RMSE: 0.4359875612347377
-      - R2 Score: 0.6258233461676486
 
-   - Test Set Metrics:
-      - MAE: 0.3302243929261407
-      - MSE: 0.1950410023050807
-      - RMSE: 0.4416344668445622
-      - R2 Score: 0.6287113252143781
-        ![](graphs/poly_result.png)
+The image showcases two types of plots(Residual Plot and Prediction Error Plot), each representing model evaluation for three different machine learning models: Polynomial Regression (Poly Reg), Neural Network (NN), and XGBoost (XGB).
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/residual_kfold.jpg" alt="Figure 5" width="90%">
+</div>
 
-The figure displays a scatter plot of predicted versus ground truth values, used to evaluate the performance of a polynomial regression model. The x-axis, labeled "Ground Truth," represents the actual values of the data set, while the y-axis, labeled "Predicted," shows the values predicted by the model.
+The image showcases two types of plots, each representing model evaluation for three different machine learning models: Polynomial Regression (Poly Reg), Neural Network (NN), and XGBoost (XGB).
 
-Two lines are plotted over the scatter points:
-- The red line represents the ground truth line
-- The blue line indicates the polynomial fit of degree 2
+The spread of data points indicates that all three models have errors that increase as the predicted values get higher, which could suggest a systematic bias in model predictions for higher values. There's no clear distinction between the models in terms of performance from these plots alone. They appear to perform similarly across the range of values. Maybe the data points with  yellow are a bit more concentrated, this bunching might hint that the XGBoost is doing a tad better at predictions compare to other two. 
 
-The scatter points represent individual predictions by the model, with their deviation from the ground truth line indicating the error in prediction. The closer the blue line fits to the red line, the better the model's predictions are. The degree of the polynomial fit, in this case, degree 2, suggests the model accounts for linear and squared terms in the relationship between the variables.
 
-2. Neual Network
-   - Validation Set Metrics:
-      - MAE: 0.32539110961437845
-      - MSE: 0.18865674426052614
-      - RMSE: 0.4343463413688737
-      - R2 Score: 0.6324616052246446
 
-   - Test Set Metrics:
-      - MAE: 0.33253964499504995
-      - MSE: 0.19729123240638619
-      - RMSE: 0.44417477686873014
-      - R2 Score: 0.624427687710457
-     ![](graphs/Best%20Model.png)
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/kfold_result.jpg" alt="Figure 6" width="70%">
+</div>
 
-This figure represents the training process of the neural network ver epochs. The x-axis shows the epoch number, and the y-axis shows the loss, which is set to MSE. 
-  There are three lines on the graph:
-- The blue line represents the training loss, which decreases consistently, suggesting the model is learning well from the training data.
-- The orange line shows the validation loss, which fluctuates as the model is tested against data it hasn't seen during training. 
-- The dashed red line indicates the test loss, which is a measure of the model's performance on another set of unseen data. 
-- The green dot marks the "Best Epoch", which is the point in training where the model achieved its best performance on the validation data.
 
-3. XGboost
-   - Validation Set Metrics:
-      - MAE: 0.29035745141344005
-      - MSE: 0.15093359400945044
-      - RMSE: 0.38850172973804176
-      - R2 Score: 0.705953311781413
-   
-   - Test Set Metrics:
-      - MAE: 0.3147783376916175
-      - MSE: 0.1803195301109762
-      - RMSE: 0.4246404715885854
-      - R2 Score: 0.6567357705219998
-    ![](graphs/XGboost.png)
+add descriptions
 
-The figure consists of two plots, side by side, evaluating the performance of an XGBoost regression model.
-
-On the left is the "Residual Plot," which plots the residuals on the y-axis against the predicted values on the x-axis. Blue points represent validation data, and yellow points represent test data. The spread of points above and below the line suggests the variance in the model's errors.
-
-On the right is the "Prediction Error Plot," which plots the actual values on the y-axis against the predicted values on the x-axis. Blue points denote validation data, while yellow points denote test data. The density of points around the line indicates the accuracy of the model.
-
-Both plots include a shaded area representing a higher density of data points, indicating the most common range of predictions and errors. 
 ## Discussion
 - In the discussion of our analytical approach, we started with the selection of a polynomial regression model, which was primarily driven by its lower mean squared error (MSE) compared to a linear model. This indicated a better fit to the data, aligning closely with the observed trends in our visualizations. However, we acknowledged that a more complex model isn't necessarily superior; it could be more prone to overfitting, especially if the polynomial degree was too high.
 
@@ -263,3 +225,4 @@ Furthermore, deploying more advanced techniques for model interpretability could
 In closing, while our project has provided valuable insights into predicting rental prices, there is always room for improvement and exploration. By continuously refining our methodologies, exploring new techniques, and incorporating feedback from stakeholders, we can ensure that our models remain relevant and effective in addressing the evolving challenges of the real estate industry.
 
 ## Collaboration
+   - Zheng Zeng
