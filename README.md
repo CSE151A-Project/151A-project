@@ -215,7 +215,15 @@ This figure represents the training process of the neural network ver epochs. Th
       - MSE: 0.1803195301109762
       - RMSE: 0.4246404715885854
       - R2 Score: 0.6567357705219998
+    ![](graphs/XGboost.png)
 
+The figure consists of two plots, side by side, evaluating the performance of an XGBoost regression model.
+
+On the left is the "Residual Plot," which plots the residuals on the y-axis against the predicted values on the x-axis. Blue points represent validation data, and yellow points represent test data. The spread of points above and below the line suggests the variance in the model's errors.
+
+On the right is the "Prediction Error Plot," which plots the actual values on the y-axis against the predicted values on the x-axis. Blue points denote validation data, while yellow points denote test data. The density of points around the line indicates the accuracy of the model.
+
+Both plots include a shaded area representing a higher density of data points, indicating the most common range of predictions and errors. 
 ## Discussion
 - In the discussion of our analytical approach, we started with the selection of a polynomial regression model, which was primarily driven by its lower mean squared error (MSE) compared to a linear model. This indicated a better fit to the data, aligning closely with the observed trends in our visualizations. However, we acknowledged that a more complex model isn't necessarily superior; it could be more prone to overfitting, especially if the polynomial degree was too high.
 
