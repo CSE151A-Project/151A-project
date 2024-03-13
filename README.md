@@ -1,21 +1,33 @@
-# Project Title
+# Advanced Forecasting for Airbnb Competitive Rental Pricing
 
 ## Introduction
-(add more)
-This project aims to predict the renting prices in different cities using various features from the dataset, such as property type, room type, bed type, cancellation policy, city, cleaning fee, host profile picture availability, host identity verification, and instant bookability. Our goal is to understand how these features influence renting prices and to build a predictive model to assist renters and landlords alike.
+The project focuses on developing a predictive model for rental prices in various cities, using data such as property type, room type, and other relevant features. This endeavor was chosen due to its potential to offer valuable insights into the rental market, enabling both renters and landlords to make informed decisions. 
+
+For renters, it demystifies the rental pricing landscape, aiding them in finding accommodations that fit their budget and preferences. Landlords, on the other hand, can optimize their pricing strategies to remain competitive while ensuring profitability. Furthermore, this model can contribute to a more transparent and efficient rental market, potentially influencing policy-making and urban planning by providing data-driven insights into housing trends. 
+
+## Dataset
+The dataset contains 74,111 listings, each with 29 attributes detailing the property, host, and booking policies, focused on predicting the logarithm of the renting price.
+It can be retrieved from Kaggle at: [Kaggle Dataset](https://www.kaggle.com/datasets/rupindersinghrana/airbnb-price-dataset/data).
 
 ## Method
 
-### Data Exploration
+### Data Observation
 
 1. The boxplot reveals the presence of outliers, makes the median a more reliable measure than the mean for imputing missing values.
-   1. ![Figure 1.](graphs/DataExploration1.png)
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/DataExploration1.png" alt="Figure 1" width="50%">
+</div>
 
-2. The histogram of the distribution of Airbnb price shows the data is a little left-skewed. 
-   1. ![Figure 2.](graphs/DataExploration3.png)
+2. The histogram of the distribution of Airbnb price shows the data is a little left-skewed, so we might choose some machine learning models are more robust to skewness like Random Forests or Gradient Boosting Machines.
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/DataExploration3.png" alt="Figure 2" width="50%">
+</div>
 
-3. The correlation matrix is calculated below.
-   1. ![Figure 3.](graphs/DataExploration4.png)
+3. The correlation matrix and pairplot is calculated below.
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/DataExploration4.png" alt="Figure 3" width="50%">
+  <img src="graphs/DataExploration5.jpg" alt="Figure 3" width="50%">
+</div>
 
 ***More investigations of other attributes can be found in the [Data PreProcessing Notebook](Data_preprocessing.ipynb), which are not shown due to the limit of space.***
 
@@ -26,7 +38,7 @@ This project aims to predict the renting prices in different cities using variou
    2. We convert the id column to a numeric type and rename it to 'id' for clarity and ease of reference.
 
 2. Handling Missing Values: 
-   1. A boxplot is drawn for the variables 'bathrooms', 'bedrooms', and 'beds' to visualize the distribution and identify outliers. Based on the presence of outliers, median values are chosen as a more reliable measure for imputing missing values. Missing values in 'bathrooms', 'bedrooms', and 'beds' are imputed with the median of each column, grouped by the 'accommodates' category, to maintain the integrity of the data.
+   1. Based on the presence of outliers, median values are chosen as a more reliable measure for imputing missing values. Missing values in 'bathrooms', 'bedrooms', and 'beds' are imputed with the median of each column, grouped by the 'accommodates' category, to maintain the integrity of the data.
    2. Missing values in 'host_response_rate' and 'review_scores_rating' are imputed with their respective median values. Before imputation, the 'host_response_rate' is converted from a percentage string to a float.
    3. We drop latitude and longitude column because it is difficult to process this kind of data and we already have City column.
 
@@ -68,11 +80,11 @@ This project aims to predict the renting prices in different cities using variou
       <!-- 2. We tried LOO after target encoding, but obtained a MSE of 0.003 with our final model, which was dramastically lower than the prior MSE. We attemptted to find the reason that caused the reduction of the MSE but failed. Therefore, we decided not to ultilize this encoding technique until we find the reason. -->
    
 7. Norm & Standard
-   1. Both normalization and standardization have their own advantages, and we first consider to use min-max because it makes us easy to interpret the data. However, We finally choose to use standardization for our project because we consider that it is less sensitivec to those outliers compared with min-max normalization. After the exploration of the data, we find that there are some outliers in the dataset which may affect the result greatly if we do not use standardization.
+
+We decided to use both standardization and normalization in our project. Standardization is great at handling the outliers we found in our data, which could really mess up our results if ignored. By combining both methods, we get the best of both worlds: easy-to-understand data from normalization and outlier resistance from standardization, making our data prep more effective and reliable.
 
 
 ### Model 1: 2nd degree Polynomial Regression
-- We built our first model with 2nd degree Polynomial Regression.
 - Second-degree polynomial regression extends linear regression by modeling the relationship between the independent variable $x$ and the dependent variable $y$ as a quadratic equation of the form $y = ax^2 + bx + c$. This allows for capturing non-linear relationships between the variables, making it suitable for datasets where the trend bends or curves, rather than following a straight line.
    ```python
    degree=2
@@ -82,8 +94,8 @@ This project aims to predict the renting prices in different cities using variou
    y_test_pred = model.predict(X_test)
    ```
 
-### Model 2: Convolutional Neural Network (CNN)
-- We build our second model with CNN, and train with hyperparameter tuner. 
+### Model 2: Deep Neural Network (DNN)
+- We build our second model with DNN, and train with hyperparameter tuner. 
    ```python
    def build_hp_model(hp):
       model = Sequential()
