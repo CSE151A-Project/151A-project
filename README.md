@@ -172,6 +172,15 @@ This project aims to predict the renting prices in different cities using variou
       - MSE: 0.1950410023050807
       - RMSE: 0.4416344668445622
       - R2 Score: 0.6287113252143781
+        ![](graphs/poly_result.png)
+
+The figure displays a scatter plot of predicted versus ground truth values, used to evaluate the performance of a polynomial regression model. The x-axis, labeled "Ground Truth," represents the actual values of the data set, while the y-axis, labeled "Predicted," shows the values predicted by the model.
+
+Two lines are plotted over the scatter points:
+- The red line represents the ground truth line
+- The blue line indicates the polynomial fit of degree 2
+
+The scatter points represent individual predictions by the model, with their deviation from the ground truth line indicating the error in prediction. The closer the blue line fits to the red line, the better the model's predictions are. The degree of the polynomial fit, in this case, degree 2, suggests the model accounts for linear and squared terms in the relationship between the variables.
 
 2. Neual Network
    - Validation Set Metrics:
@@ -185,6 +194,14 @@ This project aims to predict the renting prices in different cities using variou
       - MSE: 0.19729123240638619
       - RMSE: 0.44417477686873014
       - R2 Score: 0.624427687710457
+     ![](graphs/Best%20Model.png)
+
+This figure represents the training process of the neural network ver epochs. The x-axis shows the epoch number, and the y-axis shows the loss, which is set to MSE. 
+  There are three lines on the graph:
+- The blue line represents the training loss, which decreases consistently, suggesting the model is learning well from the training data.
+- The orange line shows the validation loss, which fluctuates as the model is tested against data it hasn't seen during training. 
+- The dashed red line indicates the test loss, which is a measure of the model's performance on another set of unseen data. 
+- The green dot marks the "Best Epoch", which is the point in training where the model achieved its best performance on the validation data.
 
 3. XGboost
    - Validation Set Metrics:
