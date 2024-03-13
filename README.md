@@ -195,8 +195,7 @@ The spread of data points indicates that all three models have errors that incre
   <img src="graphs/kfold_result.jpg" alt="Figure 6" width="70%">
 </div>
 
-
-add descriptions
+Figure above: Performance comparison of three predictive models using standard evaluation metrics. The polynomial regression model, neural network, and XGBoost are evaluated by Mean Squared Error (MSE, blue), Root Mean Squared Error (RMSE, orange), Mean Absolute Error (MAE, green), and R-squared (R2, red). The values indicate the model's accuracy and error rate, with higher R2 values and lower error metric values generally indicating better performance. XGBoost outperforms the other models in terms of R2 value, while the Neural Network has the lowest error rates as per MSE and RMSE.
 
 ## Discussion
 - In the discussion of our analytical approach, we started with the selection of a polynomial regression model, which was primarily driven by its lower mean squared error (MSE) compared to a linear model. This indicated a better fit to the data, aligning closely with the observed trends in our visualizations. However, we acknowledged that a more complex model isn't necessarily superior; it could be more prone to overfitting, especially if the polynomial degree was too high.
