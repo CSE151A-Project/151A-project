@@ -210,17 +210,11 @@ add descriptions
 - Throughout the process, we remained critical of our models, questioning their interpretability, especially with more complex architectures like NN and XGB. While the results were promising, we also recognized potential shortcomings, such as the reliance on the particularities of our dataset, which might not reflect broader patterns. There's always the possibility that a "donkey"—an unexpected variable or change in the data landscape—could challenge our model's reliability. Thus, despite achieving satisfactory results, we understand that our model is not the "unicorn" of solutions, and we must be prepared for future adaptations and refinements as new data comes to light.
  
 ## Conclusion
-Reflecting on our project, there are several aspects where we could have approached things differently and areas for potential future exploration.
+Reflecting on our project, there are several aspects where we could have approached things differently such as data preprocessing and model selection.
 
-Firstly, in terms of data preprocessing and feature engineering, while we employed various techniques such as dropping columns with excessive unique categories, handling missing values, and encoding categorical variables, there might be room for further refinement. For example, we could have explored more advanced methods for handling missing data, such as imputing values based on more sophisticated algorithms or leveraging domain knowledge to create new features that better capture the underlying patterns in the data.
+Firstly, in terms of data preprocessing and feature engineering, while we employed various techniques such as dropping columns with excessive unique categories, handling missing values, and encoding categorical variables, we could use K-nearest neighbors (KNN) to impute missing values based on the values of the nearest neighbors in the feature space, and Principal Component Analysis (PCA) to reduce and compress the dimensionality of the feature space.
 
-Additionally, our model selection process could have been more exhaustive. While we experimented with polynomial regression, DNNs, and XGBoost, there are numerous other machine learning algorithms and architectures that could have been explored, each with its own strengths and weaknesses. Future iterations of this project could involve conducting a more comprehensive model comparison study to identify the most suitable approach for the given task.
-
-In terms of future directions, one avenue for exploration could involve incorporating additional datasets or external sources of information to enrich the feature set and improve model generalization. For example, integrating data on local economic indicators, transportation infrastructure, or nearby amenities could provide valuable context and enhance the predictive power of the models.
-
-Furthermore, deploying more advanced techniques for model interpretability could be beneficial. While our models yielded satisfactory performance, their interpretability might be limited, making it challenging to understand the underlying factors driving the predictions. Exploring techniques such as SHAP (SHapley Additive exPlanations) values or LIME (Local Interpretable Model-agnostic Explanations) could help shed light on the black-box nature of certain models and provide actionable insights for stakeholders.
-
-In closing, while our project has provided valuable insights into predicting rental prices, there is always room for improvement and exploration. By continuously refining our methodologies, exploring new techniques, and incorporating feedback from stakeholders, we can ensure that our models remain relevant and effective in addressing the evolving challenges of the real estate industry.
+Additionally, our model selection process could have been more exhaustive. While we experimented with polynomial regression, DNNs, and XGBoost, future iterations of this project could involve conducting a more comprehensive model such as?
 
 ## Collaboration
    - Zheng Zeng
