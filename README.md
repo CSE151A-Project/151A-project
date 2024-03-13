@@ -236,5 +236,14 @@ Both plots include a shaded area representing a higher density of data points, i
 - Throughout the process, we remained critical of our models, questioning their interpretability, especially with more complex architectures like NN and XGB. While the results were promising, we also recognized potential shortcomings, such as the reliance on the particularities of our dataset, which might not reflect broader patterns. There's always the possibility that a "donkey"—an unexpected variable or change in the data landscape—could challenge our model's reliability. Thus, despite achieving satisfactory results, we understand that our model is not the "unicorn" of solutions, and we must be prepared for future adaptations and refinements as new data comes to light.
  
 ## Conclusion
+In this project, our objective was to develop predictive models for rental prices using a dataset encompassing a range of property and host attributes. We initiated our analysis by thoroughly exploring the dataset and preprocessing it, addressing outliers, missing values, and performing feature engineering.
+
+Subsequently, we experimented with three distinct modeling approaches: polynomial regression, convolutional neural networks (CNNs), and Extreme Gradient Boosting (XGBoost). Each model was evaluated based on various performance metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), Root Mean Squared Error (RMSE), and Coefficient of Determination (R2 Score).
+
+Our findings revealed that all models demonstrated satisfactory performance, with each showcasing strengths and limitations. Polynomial regression provided interpretability but struggled to capture complex relationships. CNNs excelled in capturing intricate patterns but required substantial computational resources. XGBoost, leveraging ensemble learning, exhibited robust performance but demanded meticulous hyperparameter tuning.
+
+Despite achieving satisfactory results, several areas warrant further exploration and refinement. Enhancing feature engineering techniques and selecting relevant features could potentially boost model performance. Moreover, conducting extensive hyperparameter tuning and model evaluation could optimize model efficacy.
+
+Looking ahead, future endeavors could involve incorporating additional datasets to enrich feature sets, exploring more sophisticated machine learning algorithms, and adapting models to evolving rental market dynamics. By embracing a culture of continual learning and innovation, we can provide invaluable insights to renters and landlords, empowering them in navigating the dynamic real estate landscape effectively.
 
 ## Collaboration
