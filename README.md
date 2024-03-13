@@ -210,7 +210,7 @@ add descriptions
 - Throughout the process, we remained critical of our models, questioning their interpretability, especially with more complex architectures like NN and XGB. While the results were promising, we also recognized potential shortcomings, such as the reliance on the particularities of our dataset, which might not reflect broader patterns. There's always the possibility that a "donkey"—an unexpected variable or change in the data landscape—could challenge our model's reliability. Thus, despite achieving satisfactory results, we understand that our model is not the "unicorn" of solutions, and we must be prepared for future adaptations and refinements as new data comes to light.
  
 ## Conclusion
-Reflecting on our project, there are several aspects where we could have approached things differently such as data preprocessing and model selection.
+Reflecting on our project, there are several aspects where we could have approached things differently, such as data preprocessing and model selection.
 
 Firstly, in terms of data preprocessing and feature engineering, while we employed various techniques such as dropping columns with excessive unique categories, handling missing values, and encoding categorical variables, we could use K-nearest neighbors (KNN) to impute missing values based on the values of the nearest neighbors in the feature space, and Principal Component Analysis (PCA) to reduce and compress the dimensionality of the feature space.
 
