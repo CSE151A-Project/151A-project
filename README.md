@@ -154,9 +154,61 @@ This project aims to predict the renting prices in different cities using variou
 
 
 ## Result
- 
-## Discussion
+- The result is presented in 4 aspects for validation set and test set:
+   - Mean Absolute Error (MAE)
+   - Mean Squared Error (MSE)
+   - Root Mean Squared Error (RMSE)
+   - Coefficient of Determination (R2 Score)
 
+1. 2nd Degree Polynomial Regression 
+   - Validation Set Metrics:
+      - MAE: 0.327352408724221
+      - MSE: 0.19008515355141414
+      - RMSE: 0.4359875612347377
+      - R2 Score: 0.6258233461676486
+
+   - Test Set Metrics:
+      - MAE: 0.3302243929261407
+      - MSE: 0.1950410023050807
+      - RMSE: 0.4416344668445622
+      - R2 Score: 0.6287113252143781
+
+2. Neual Network
+   - Validation Set Metrics:
+      - MAE: 0.32539110961437845
+      - MSE: 0.18865674426052614
+      - RMSE: 0.4343463413688737
+      - R2 Score: 0.6324616052246446
+
+   - Test Set Metrics:
+      - MAE: 0.33253964499504995
+      - MSE: 0.19729123240638619
+      - RMSE: 0.44417477686873014
+      - R2 Score: 0.624427687710457
+
+3. XGboost
+   - Validation Set Metrics:
+      - MAE: 0.29035745141344005
+      - MSE: 0.15093359400945044
+      - RMSE: 0.38850172973804176
+      - R2 Score: 0.705953311781413
+   
+   - Test Set Metrics:
+      - MAE: 0.3147783376916175
+      - MSE: 0.1803195301109762
+      - RMSE: 0.4246404715885854
+      - R2 Score: 0.6567357705219998
+
+## Discussion
+- In the discussion of our analytical approach, we started with the selection of a polynomial regression model, which was primarily driven by its lower mean squared error (MSE) compared to a linear model. This indicated a better fit to the data, aligning closely with the observed trends in our visualizations. However, we acknowledged that a more complex model isn't necessarily superior; it could be more prone to overfitting, especially if the polynomial degree was too high.
+
+- We implemented k-fold cross-validation and neural network (NN) models to further refine our predictions and assess model stability across different data partitions. The inclusion of cross-validation was a critical step to guard against overfitting and to evaluate the model's ability to generalize to unseen data. With NN, we explored the utility of a more flexible, non-linear approach that could capture complex patterns in the data.
+
+- Hyperparameter tuning was another vital step in the process, particularly for the NN model, where we ultimately selected the ReLU activation function. This decision was based on ReLU's performance and its widespread success in various applications, but we remained cautious about its well-known limitations, such as the dying ReLU problem.
+
+- The final piece of our modeling puzzle was the XGBoost (XGB) algorithm, which brought an ensemble learning approach to the table. Its gradient boosting framework was expected to further enhance performance and has been celebrated for its effectiveness across numerous machine learning competitions.
+
+- Throughout the process, we remained critical of our models, questioning their interpretability, especially with more complex architectures like NN and XGB. While the results were promising, we also recognized potential shortcomings, such as the reliance on the particularities of our dataset, which might not reflect broader patterns. There's always the possibility that a "donkey"—an unexpected variable or change in the data landscape—could challenge our model's reliability. Thus, despite achieving satisfactory results, we understand that our model is not the "unicorn" of solutions, and we must be prepared for future adaptations and refinements as new data comes to light.
  
 ## Conclusion
 
