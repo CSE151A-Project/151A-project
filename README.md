@@ -240,3 +240,7 @@ Additionally, our model selection process could have been more exhaustive. While
   - Conducted the data exploration with scalization of MinMax and Standardization. 
   - Add some details to the hyperparameter tuning for the DNN model.
   - Complete the discussion part of the final report including the pipeline of our thoughts and methods we want to try.
+- Peike Xu:
+  -  Implemented initial visualization of the dataset. Identified potential relationships between features and established targets for data cleaning processes.
+  -  Plotted residual graphs to compare the prediction of the training models against the ground truth.
+  -  Conducted in-depth analysis through supportive graphs that demonstrate the effectiveness and accuracy of each model, enabling informed decision-making regarding model selection.
