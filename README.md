@@ -226,3 +226,4 @@ Additionally, our model selection process could have been more exhaustive. While
 
 ## Collaboration
    - Zheng Zeng
+   - Tongfei Yang: data exploration(graphs), built the first model(linear regression), figures showing modeling fitting&errors, readme file updates
