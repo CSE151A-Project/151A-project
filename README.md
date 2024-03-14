@@ -231,3 +231,7 @@ Additionally, our model selection process could have been more exhaustive. While
    - Managed the GitHub repository ensure it meet all requirements. Polished the repository for the final version and reworded the README for enhanced clarity.
 - Tongfei Yang: 
   - Conducted initial data exploration with graphical analysis, developed the baseline model using linear regression, visualized model fit and errors through plots, and maintained updates to the README file.
+- Runpeng Jian:
+  - Performed data preprocessing and feature engineering on textual features with sentiment analysis.
+  - Implemented the DNN model using Keras and hyperparameter tuning using Keras Tuner. Evaluated models on the test set and optimized the hyperparameters using Keras Tuner. 
+  - Composed the method section of the final report.
