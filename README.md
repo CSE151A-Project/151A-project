@@ -195,25 +195,34 @@ The spread of data points indicates that all three models have errors that incre
   <img src="graphs/kfold_result.jpg" alt="Figure 6" width="70%">
 </div>
 
-Figure above: Performance comparison of three predictive models using standard evaluation metrics. The polynomial regression model, neural network, and XGBoost are evaluated by Mean Squared Error (MSE, blue), Root Mean Squared Error (RMSE, orange), Mean Absolute Error (MAE, green), and R-squared (R2, red). The values indicate the model's accuracy and error rate, with higher R2 values and lower error metric values generally indicating better performance. XGBoost outperforms the other models in terms of R2 value, while the Neural Network has the lowest error rates as per MSE and RMSE.
+Figure above: Performance comparison of three predictive models using standard evaluation metrics. The polynomial regression model, neural network, and XGBoost are evaluated by Mean Squared Error (MSE, blue), Root Mean Squared Error (RMSE, orange), Mean Absolute Error (MAE, green), and R-squared (R2, red). The values indicate the model's accuracy and error rate, with higher R2 values and lower error metric values generally indicating better performance. XGBoost performs slightly better than other models at all values.
 
 ## Discussion
-- In the discussion of our analytical approach, we started with the selection of a polynomial regression model, which was primarily driven by its lower mean squared error (MSE) compared to a linear model. This indicated a better fit to the data, aligning closely with the observed trends in our visualizations. However, we acknowledged that a more complex model isn't necessarily superior; it could be more prone to overfitting, especially if the polynomial degree was too high.
+Our analytical began with the adoption of polynomial regression due to its lower MSE than a linear model, suggesting a better fit. Mindful of the potential for overfitting with increased complexity, we transitioned to experimenting with DNNs to capitalize on their flexibility in modeling non-linearities. Our exploration culminated with the introduction of XGBoost, leveraging its ensemble learning capabilities to optimize our predictive performance.
 
-- We implemented k-fold cross-validation and neural network (NN) models to further refine our predictions and assess model stability across different data partitions. The inclusion of cross-validation was a critical step to guard against overfitting and to evaluate the model's ability to generalize to unseen data. With NN, we explored the utility of a more flexible, non-linear approach that could capture complex patterns in the data.
 
-- Hyperparameter tuning was another vital step in the process, particularly for the NN model, where we ultimately selected the ReLU activation function. This decision was based on ReLU's performance and its widespread success in various applications, but we remained cautious about its well-known limitations, such as the dying ReLU problem.
+In the process of refining our models, a crucial stage was the tuning of hyperparameters, especially for the neural network and XGBoost. For the neural network, we settled on the leaky ReLU activation function after observing its superior performance compared to the standard ReLU. For our XGBoost model, hyperparameter tuning focused on a range of values for 'max_depth', 'eta', 'subsample', and 'colsample_bytree' to fine-tune the model's complexity and learning rate, as well as its sampling methods. These parameters were chosen to balance the model's ability to learn from the data against the risk of overfitting.
 
-- The final piece of our modeling puzzle was the XGBoost (XGB) algorithm, which brought an ensemble learning approach to the table. Its gradient boosting framework was expected to further enhance performance and has been celebrated for its effectiveness across numerous machine learning competitions.
+We experimented with various categorical encoding techniques and made an intriguing observation: the XGBoost model's mean squared error significantly improved when we applied leave-one-out encoding. The underlying cause for this enhancement is not immediately clear to us.
 
-- Throughout the process, we remained critical of our models, questioning their interpretability, especially with more complex architectures like NN and XGB. While the results were promising, we also recognized potential shortcomings, such as the reliance on the particularities of our dataset, which might not reflect broader patterns. There's always the possibility that a "donkey"—an unexpected variable or change in the data landscape—could challenge our model's reliability. Thus, despite achieving satisfactory results, we understand that our model is not the "unicorn" of solutions, and we must be prepared for future adaptations and refinements as new data comes to light.
- 
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/residual_loo.jpg" alt="Figure 7" width="90%">
+</div>
+Residuals for XGBoost appear to be more tightly clustered around the zero line, and the data points on prediction error plot are distributed around the diagonal (representing perfect predictions)
+<div style="display: flex; justify-content: center;" align="center">
+  <img src="graphs/loo_comp.jpg" alt="Figure 8" width="70%">
+</div>
+XGBoost has a very low MSE, RMSE, and MAE close to 0, which suggests excellent predictive accuracy. XGBoost achieves a perfect score of 1 for R2 score, which in real-world scenarios might suggest overfitting or a data leakage issue, as it's unusual for models to explain 100% of the variance in the target variable.
+
+However, due to the perfect R^2 score,  and further investigation is warranted to ensure the results are valid and the model is generalizing well without overfitting.
+
+
 ## Conclusion
 Reflecting on our project, there are several aspects where we could have approached things differently, such as data preprocessing and model selection.
 
 Firstly, in terms of data preprocessing and feature engineering, while we employed various techniques such as dropping columns with excessive unique categories, handling missing values, and encoding categorical variables, we could use K-nearest neighbors (KNN) to impute missing values based on the values of the nearest neighbors in the feature space, and Principal Component Analysis (PCA) to reduce and compress the dimensionality of the feature space.
 
-Additionally, our model selection process could have been more exhaustive. While we experimented with polynomial regression, DNNs, and XGBoost, future iterations of this project could involve conducting a more comprehensive model such as?
+Additionally, our model selection process could have been more exhaustive. While we experimented with polynomial regression, DNNs, and XGBoost, future iterations of this project could involve conducting a more comprehensive model such as random forest regression, etc.
 
 ## Collaboration
    - Zheng Zeng
