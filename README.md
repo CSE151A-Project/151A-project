@@ -235,3 +235,8 @@ Additionally, our model selection process could have been more exhaustive. While
   - Performed data preprocessing and feature engineering on textual features with sentiment analysis.
   - Implemented the DNN model using Keras and hyperparameter tuning using Keras Tuner. Evaluated models on the test set and optimized the hyperparameters using Keras Tuner. 
   - Composed the method section of the final report.
+- Tianhao Chen:
+  - Drafted the outline of the readme file 
+  - Conducted the data exploration with scalization of MinMax and Standardization. 
+  - Add some details to the hyperparameter tuning for the DNN model.
+  - Complete the discussion part of the final report including the pipeline of our thoughts and methods we want to try.
