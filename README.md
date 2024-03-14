@@ -225,5 +225,9 @@ Firstly, in terms of data preprocessing and feature engineering, while we employ
 Additionally, our model selection process could have been more exhaustive. While we experimented with polynomial regression, DNNs, and XGBoost, future iterations of this project could involve conducting a more comprehensive model such as random forest regression, etc.
 
 ## Collaboration
-   - Zheng Zeng
-   - Tongfei Yang: data exploration(graphs), built the first model(linear regression), figures showing modeling fitting&errors, readme file updates
+ - Zheng Zeng
+   - Coordinated team meetings wrote agenda for each meeting and distributed tasks.
+   - Handled data cleaning and preprocessing for analysis readiness. Performed hyperparameter tuning for NN and XGB.
+   - Managed the GitHub repository ensure it meet all requirements. Polished the repository for the final version and reworded the README for enhanced clarity.
+- Tongfei Yang: 
+  - Conducted initial data exploration with graphical analysis, developed the baseline model using linear regression, visualized model fit and errors through plots, and maintained updates to the README file.
