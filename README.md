@@ -36,7 +36,8 @@ It can be retrieved from Kaggle at: [Kaggle Dataset](https://www.kaggle.com/data
 1. Data Cleaning: 
    1. We drop columns with excessive unique categories or missing data that would be impractical to one-hot encode or impute, such as 'thumbnail_url', 'zipcode', 'neighbourhood', 'first_review', and 'last_review'.
    2. We convert the id column to a numeric type and rename it to 'id' for clarity and ease of reference and extraction.
-   3. We apply both Min-Max and standardization scalization to the numerical data, and choose to use standardization.
+   3. We apply both Min-Max and standardization scalization to the numerical data, and choose to use standardization after considering both metrics.
+
 2. Handling Missing Values: 
    1. Based on the presence of outliers, median values are chosen as a more reliable measure for imputing missing values. Missing values in 'bathrooms', 'bedrooms', and 'beds' are imputed with the median of each column, grouped by the 'accommodates' category, to maintain the integrity of the data.
    2. Missing values in 'host_response_rate' and 'review_scores_rating' are imputed with their respective median values. Before imputation, the 'host_response_rate' is converted from a percentage string to a float.
