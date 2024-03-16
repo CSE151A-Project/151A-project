@@ -254,3 +254,6 @@ Additionally, our model selection process could have been more exhaustive. While
   - Participated in building 2nd degree polydomial model.
   - Participated in building XGB model.
   - Participated in final README editting.
+- Mianchen Zhang:
+  - Conducted data visualization by plotting the median prices across various categories such as property type, room type, revealing  insights into factors affecting rental prices.
+  - Implemented and optimized an XGBoost model utilizing k-fold cross-validation to enhance model accuracy and reliability.
