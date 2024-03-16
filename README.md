@@ -249,7 +249,7 @@ Additionally, our model selection process could have been more exhaustive. While
   -  Conducted the data exploration with the 2nd degree polynomial model.
   -  Generated graphs and visulized if the model fit.
   -  Fixed error of onehot to perform the normal data and graphs using training and validation.
-  -  Updates the data propcessign to the readme file.
+  -  Updates the data propcessing to the readme file.
 - Duanhui Li:
   - Evaluated and reflected on 2nd degree polydomial and neural network with hyperparameter tuning models.
   - Acknowledged areas for improvement such as a more comprehensive approach to handling missing values/model selection.
