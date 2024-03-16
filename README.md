@@ -245,6 +245,11 @@ Additionally, our model selection process could have been more exhaustive. While
   -  Implemented initial visualization of the dataset. Identified potential relationships between features and established targets for data cleaning processes.
   -  Plotted residual graphs to compare the prediction of the training models against the ground truth.
   -  Conducted in-depth analysis through supportive graphs that demonstrate the effectiveness and accuracy of each model, enabling informed decision-making regarding model selection.
+- Shibo Mao:
+  -  Conducted the data exploration with the 2nd degree polynomial model.
+  -  Generated graphs and visulized if the model fit.
+  -  Fixed error of onehot to perform the normal data and graphs using training and validation.
+  -  Updates the data propcessign to the readme file.
 - Duanhui Li:
   - Evaluated and reflected on 2nd degree polydomial and neural network with hyperparameter tuning models.
   - Acknowledged areas for improvement such as a more comprehensive approach to handling missing values/model selection.
